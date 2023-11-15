@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body%}
+
+<div class="container border py-4 my-4 w-75">
+    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" id="title" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <textarea class="form-control" name="desc" id="desc" style="height: 200px;" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="filename" class="form-label">Select Video File</label>
+            <input type="file" name="fileName" class="form-control" id="filename" accept="video/*" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="thumb" class="form-label">Select Thumbnail</label>
+            <input type="file" name="thumbnail_img" class="form-control" id="thumb" accept="image/*" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Select Category</label>
+            <select class="form-control" name="category">
+                <option>Science & Techanology</option>
+                <option>Education</option>
+                <option>Blogs</option>
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+
+{% endblock %}

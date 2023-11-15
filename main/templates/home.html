@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="container-fluid my-2">
+      <div class="card bg-light text-white">
+        <img src="{% static 'img/abc.jpg' %}" class="card-img" style="height: 350px;" alt="...">
+        <div class="card-img-overlay">
+          <h1 style="margin-top: 150px; text-align: center;">STREAMER</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row my-4">
+
+        {% for video in all_videos %}
+        <div class="col-3">
+
+          <a href="{% url 'watch_video' video.id %}" style="text-decoration: none;">
+            <img src="{% static video.thumbnail.url %}" class="w-100">
+          </a>
+          <a href="{% url 'watch_video' video.id %}" style="text-decoration: none;">
+            <h6>{{video.title}}</h6>  
+          </a>
+          <span class="text-muted">{{video.video_views.all.count}} views • {{video.pub_date}}</span>
+
+        </div>
+        {% endfor %}
+      </div>
+
+
+{% endblock %}   
